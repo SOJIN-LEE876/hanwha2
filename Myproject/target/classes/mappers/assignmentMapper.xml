@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.hanwha.assignment">
+ 
+ 	<select id="selectAll" resultType="com.hanwha.model.AssignmentDTO">
+ 		select * from assignment 
+ 	</select>
+ 	
+ 	<select id="selectAllbyId" parameterType="int" resultType="com.hanwha.model.AssignmentDTO">
+ 		select * from assignment where assignment_id=#{dd}
+ 	</select>
+
+ 	<select id="selectById" parameterType="int" resultType="com.hanwha.model.AssignmentDTO">
+ 		select * from assignment where assignment_id= #{aa}
+ 	</select>
+ 	
+ 
+ 	
+ 	<insert id="insert" parameterType="com.hanwha.model.AssignmentDTO">
+ 		insert into assignment values(#{assignment_id},#{assignment_name},#{week},#{fileName1},#{fileName2},#{fileName3})
+ 	</insert>
+ 	
+ 	<update id="update"  parameterType="com.hanwha.model.AssignmentDTO">
+ 		update assignment
+				set assignment_name = #{assignment_name},fileName1=#{fileName1},fileName2=#{fileName2},fileName3=#{fileName3} 
+				where week=#{week} AND assignment_id=#{assignment_id}
+ 	</update>
+ 	
+ 	
+	<delete id="delete" parameterType="com.hanwha.model.AssignmentDTO">
+		delete from assignment where week=#{week} AND assignment_id=#{assignment_id}
+	</delete>
+	
+	
+ 	<select id="selectByIdandWeek" parameterType="com.hanwha.model.AssignmentDTO" resultType="com.hanwha.model.AssignmentDTO">
+ 		select * from assignment where week=#{week} AND assignment_id= #{assignment_id}
+ 	</select>
+	
+	
+	 	
+ </mapper>
